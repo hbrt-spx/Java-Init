@@ -23,40 +23,45 @@ public class Main {
      */
 
 
-    public static void calcularMedia() {
 
-    }
 
     /* ONDE VAI SER INICIALIZADO E VERIFICAMOS SE A ATIVIDADE FOI REALIZADA */
     public static void main(String[] args) {
 
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        int N, i;
+        int qtdNotas = 0, index;
 
-        System.out.print("Quantas provas aconteceram nesse semestre? ");
-        N = sc.nextInt();
+        while (qtdNotas <= 0) {
+            System.out.print("Quantas provas aconteceram nesse semestre? ");
+            qtdNotas = sc.nextInt();
+            if (qtdNotas <= 0) {
+                System.out.println("Você deve informar quantas provas aconteceram (valor maior que 0).");
+            }
+        }
 
-        double[] notas = new double[N];
-        
-        for (i = 0; i < N; i++) {
-            System.out.print("Digite a " + (i+1) + "ª nota: ");
-            notas[i] = sc.nextDouble();
-            if(notas[i] > 10){
+        double[] notas = new double[qtdNotas];
+
+        for (index = 0; index < qtdNotas; index++) {
+            System.out.print("Digite a " + (index+1) + "ª nota: "); //não entendi como validar antes dele estar no sistema
+            notas[index] = sc.nextDouble();
+            if(notas[index] > 10 || notas[index] < 0){
                 System.out.println("A nota deve ser de 0 a 10");
-                i = -1;
+                index += -1;
             }
 
 
         }
         System.out.println("Média do aluno: ");
-            System.out.println(Arrays.stream(notas).sum()/N);
 
-            if(Arrays.stream(notas).sum()/N >= 6){
-                System.out.println("Aluno aprovado!");
-            } else {
-                System.out.println("Aluno reprovado!");
-            }
+
+        double media = (Arrays.stream(notas).sum()/qtdNotas);
+        System.out.println(media);
+        if(media >= 6){
+            System.out.println("Aluno aprovado!");
+        } else {
+            System.out.println("Aluno reprovado!");
+        }
         sc.close();
 
 
