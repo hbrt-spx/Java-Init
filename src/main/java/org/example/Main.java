@@ -1,9 +1,7 @@
 package org.example;
 
 
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -24,47 +22,10 @@ public class Main {
 
 
 
+    /** 1.RESOLVER A PARTE DE REGEX, VOU ABRIR UMA ISSUE E VOCE ME MOSTRA A SOLUÇÃO */
+    /** 2. TODA A ESTRUTURA VAI VIRAR UMA FUNÇÃO QUE CALCULA MEDIA, BASEADA NA QUANTIDADE DE NOTAS PASSADA NOS PARAMETROS */
 
-    /* ONDE VAI SER INICIALIZADO E VERIFICAMOS SE A ATIVIDADE FOI REALIZADA */
     public static void main(String[] args) {
-
-        Locale.setDefault(Locale.US);
-        Scanner sc = new Scanner(System.in);
-        int qtdNotas = 0, index;
-
-        while (qtdNotas <= 0) {
-            System.out.print("Quantas provas aconteceram nesse semestre? ");
-            qtdNotas = sc.nextInt();
-            if (qtdNotas <= 0) {
-                System.out.println("Você deve informar quantas provas aconteceram (valor maior que 0).");
-            }
-        }
-
-        double[] notas = new double[qtdNotas];
-
-        for (index = 0; index < qtdNotas; index++) {
-            System.out.print("Digite a " + (index+1) + "ª nota: "); //não entendi como validar antes dele estar no sistema
-            notas[index] = sc.nextDouble();
-            if(notas[index] > 10 || notas[index] < 0){
-                System.out.println("A nota deve ser de 0 a 10");
-                index += -1;
-            }
-
-
-        }
-        System.out.println("Média do aluno: ");
-
-
-        double media = (Arrays.stream(notas).sum()/qtdNotas);
-        System.out.println(media);
-        if(media >= 6){
-            System.out.println("Aluno aprovado!");
-        } else {
-            System.out.println("Aluno reprovado!");
-        }
-        sc.close();
-
-
 
     }
 }
