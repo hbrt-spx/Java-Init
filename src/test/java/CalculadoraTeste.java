@@ -22,7 +22,7 @@ public class CalculadoraTeste {
     @Test
     void somaValores(){
         Calculadora calculadora = new Calculadora();
-        assertEquals(9, calculadora.somaValores(new Object[]{1, 3, 5})); // Se eu passar valores que a soma da maior do que 10 esta caindo na exception por conta da regex
+        assertEquals(50, calculadora.somaValores(new Object[]{10, 10, 30})); // Tive que mudar a regex, pois se a soma fosse maior que 10, ou os numeros, caia na exception.
     }
 
 
