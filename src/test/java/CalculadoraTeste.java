@@ -1,4 +1,6 @@
 import org.example.calculo.Calculadora;
+import org.example.exceptions.NumberValidateException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
@@ -10,13 +12,13 @@ public class CalculadoraTeste {
     @Test
     void calcularMedia () {
         Calculadora calculadora = new Calculadora();
-        assertEquals(10, calculadora.calcularMedia(new Object[]{10, 10, 10, 10}));
+        assertEquals(4, calculadora.calcularMedia(new Object[]{10, "1", "1", "4"}));
     }
 
     @Test
-    void validadorDeNotas (){
+    void validadorDeNotas() {
         Calculadora calculadora = new Calculadora();
-        assertTrue(calculadora.validadorDeNotas(new Object[]{"A"}));
+        Assertions.assertThrows(NumberValidateException.class, () -> calculadora.validadorDeNotas(new Object[]{"A", 10, 10, 10}));
     }
 
     @Test
